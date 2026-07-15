@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: @active@
+  config:
+    import:
+      - optional:file:./config/application-prod.yml

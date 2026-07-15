@@ -10,7 +10,6 @@
         <relativePath/>
     </parent>
 
-
     <groupId>me</groupId>
     <artifactId>me-cloud</artifactId>
     <version>${revision}</version>
@@ -19,7 +18,26 @@
     <modules>
         <module>me-infra</module>
         <module>me-shared</module>
+        <module>me-platform</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <active>local</active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <active>prod</active>
+            </properties>
+        </profile>
+    </profiles>
 
     <properties>
         <!-- 项目版本 -->
