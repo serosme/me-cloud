@@ -10,4 +10,5 @@
     </parent>
 
     <artifactId>me-infra</artifactId>
+    <packaging>pom</packaging>
 </project>

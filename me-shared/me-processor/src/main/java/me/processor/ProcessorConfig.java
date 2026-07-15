@@ -1,9 +1,9 @@
-package com.ctsi.dgbu.processor;
+package me.processor;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.ctsi.dgbu.processor")
+@ComponentScan("me.processor")
 public class ProcessorConfig {
 }

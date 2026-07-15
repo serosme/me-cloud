@@ -9,7 +9,9 @@
         <version>${revision}</version>
     </parent>
 
+
     <artifactId>me-shared</artifactId>
+    <packaging>pom</packaging>
 
     <modules>
         <module>me-log</module>

@@ -50,7 +50,7 @@
     <springProfile name="local">
         <!-- 指定包或类的日志输出级别 -->
         <logger name="org.springframework.jdbc.core.JdbcTemplate" level="debug"/>
-        <logger name="com.ctsi.dgbu" level="debug"/>
+        <logger name="me" level="debug"/>
     </springProfile>
     <!-- 非 local 环境下配置 -->
     <springProfile name="!local">

@@ -1,4 +1,4 @@
-package com.ctsi.dgbu.processor;
+package me.processor;
 
 public interface Handler<C extends Context<?, ?>> {
     /**

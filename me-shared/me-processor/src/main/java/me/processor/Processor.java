@@ -1,4 +1,4 @@
-package com.ctsi.dgbu.processor;
+package me.processor;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.ResolvableType;
