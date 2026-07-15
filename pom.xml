@@ -2,45 +2,176 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>4.1.0</version>
         <relativePath/>
     </parent>
+
+
     <groupId>me</groupId>
     <artifactId>me-cloud</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>me-cloud</name>
-    <description>me-cloud</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
-    <properties>
-        <java.version>25</java.version>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <version>${revision}</version>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>me-infra</module>
+        <module>me-shared</module>
+    </modules>
+
+    <properties>
+        <!-- 项目版本 -->
+        <revision>0.0.1</revision>
+
+        <!-- JDK -->
+        <java.version>25</java.version>
+
+        <!-- Spring Cloud Dependencies -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+        <!-- Reference Documentation -->
+        <!-- https://docs.spring.io/spring-cloud-release/reference/index.html -->
+        <!-- Compatibility -->
+        <!-- https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions#supported-releases -->
+        <spring-cloud.version>2025.0.3</spring-cloud.version>
+
+        <!-- Spring Boot Dependencies -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+        <!-- Reference Documentation -->
+        <!-- https://docs.spring.io/spring-boot/index.html -->
+        <!-- System Requirements -->
+        <!-- https://docs.spring.io/spring-boot/system-requirements.html -->
+        <spring-boot.version>3.5.15</spring-boot.version>
+
+        <!-- Spring AI BOM -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-bom -->
+        <!-- Reference Documentation -->
+        <!-- https://docs.spring.io/spring-ai/reference/index.html -->
+        <!-- Compatibility -->
+        <!-- https://github.com/spring-projects/spring-ai?tab=readme-ov-file#spring-boot-version-compatibility -->
+        <spring-ai.version>1.1.8</spring-ai.version>
+
+        <!-- Spring AI Alibaba Bom -->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud.ai/spring-ai-alibaba-bom -->
+        <!-- Reference Documentation -->
+        <!-- https://java2ai.com/ -->
+        <!-- Compatibility -->
+        <!-- https://java2ai.com/docs/versions#%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E8%A1%A8 -->
+        <spring-ai-alibaba.version>1.1.2.3</spring-ai-alibaba.version>
+
+        <!-- MyBatis Plus -->
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-bom -->
+        <!-- Reference Documentation -->
+        <!-- https://baomidou.com/ -->
+        <!-- Compatibility -->
+        <!-- https://baomidou.com/getting-started/install/ -->
+        <mybatis-plus.version>3.5.17</mybatis-plus.version>
+
+        <!-- MyBatis Plus Join Boot Starter -->
+        <!-- https://mvnrepository.com/artifact/com.github.yulichang/mybatis-plus-join-boot-starter -->
+        <!-- Reference Documentation -->
+        <!-- https://mybatis-plus-join.github.io/ -->
+        <mybatis-plus-join.version>1.5.9</mybatis-plus-join.version>
+
+        <!-- MinIO -->
+        <!-- https://mvnrepository.com/artifact/io.minio/minio -->
+        <!-- Java Client API Reference Documentation -->
+        <!-- https://docs.min.io/enterprise/aistor-object-store/developers/sdk/java/api/ -->
+        <minio.version>9.0.3</minio.version>
+
+        <!-- Knife4j Next -->
+        <!-- https://knife4jnext.com/ -->
+        <knife4j-next.version>5.0.11</knife4j-next.version>
+
+        <!-- Hutool All -->
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <hutool.version>5.8.46</hutool.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Cloud Dependencies -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring Boot Dependencies -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring AI BOM -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-bom -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Knife4j OpenAPI3 Jakarta Spring Boot Starter -->
+            <!-- https://mvnrepository.com/artifact/com.baizhukui/knife4j-openapi3-jakarta-spring-boot-starter -->
+            <dependency>
+                <groupId>com.baizhukui</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j-next.version}</version>
+            </dependency>
+            <!-- Knife4j Gateway Spring Boot Starter -->
+            <!-- https://mvnrepository.com/artifact/com.baizhukui/knife4j-gateway-spring-boot-starter -->
+            <dependency>
+                <groupId>com.baizhukui</groupId>
+                <artifactId>knife4j-gateway-spring-boot-starter</artifactId>
+                <version>${knife4j-next.version}</version>
+            </dependency>
+            <!-- Spring AI Alibaba Bom -->
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud.ai/spring-ai-alibaba-bom -->
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-bom</artifactId>
+                <version>${spring-ai-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- MyBatis Plus -->
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-bom -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-bom</artifactId>
+                <version>${mybatis-plus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- MyBatis Plus Join Boot Starter -->
+            <!-- https://mvnrepository.com/artifact/com.github.yulichang/mybatis-plus-join-boot-starter -->
+            <dependency>
+                <groupId>com.github.yulichang</groupId>
+                <artifactId>mybatis-plus-join-boot-starter</artifactId>
+                <version>${mybatis-plus-join.version}</version>
+            </dependency>
+            <!-- MinIO -->
+            <!-- https://mvnrepository.com/artifact/io.minio/minio -->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+            <!-- Hutool All -->
+            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -50,5 +181,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
