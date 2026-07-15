@@ -15,6 +15,7 @@
 
     <modules>
         <module>me-log</module>
+        <module>me-mybatis-plus</module>
         <module>me-processor</module>
     </modules>
 </project>
