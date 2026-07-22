@@ -9,13 +9,14 @@
         <version>${revision}</version>
     </parent>
 
-
     <artifactId>me-shared</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>me-log</module>
-        <module>me-mybatis-plus</module>
-        <module>me-processor</module>
+        <module>me-shared-log</module>
+        <module>me-shared-core</module>
+        <module>me-shared-web</module>
+        <module>me-shared-mybatisplus</module>
+        <module>me-shared-processor</module>
     </modules>
 </project>

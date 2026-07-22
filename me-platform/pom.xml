@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>me-gateway</module>
+        <module>me-platform-gateway</module>
+        <module>me-platform-system</module>
     </modules>
 </project>
