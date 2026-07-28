@@ -11,11 +11,10 @@ example-cloud
 │   ├── example-platform-gateway  # 网关
 │   └── example-platform-system   # 系统服务
 └── example-shared             # 公共模块（聚合模块）
-    ├── example-shared-core        # 核心
+    ├── example-shared-core        # 核心（含处理器链）
     ├── example-shared-log         # 日志
     ├── example-shared-web         # Web 异常处理
-    ├── example-shared-mybatisplus # MyBatis Plus 配置
-    └── example-shared-processor   # 处理器链
+    └── example-shared-mybatisplus # MyBatis Plus 配置
 ```
 
 ## 技术栈
@@ -26,6 +25,18 @@ example-cloud
 - **MyBatis Plus** 3.5.17
 - **Spring AI** 1.1.8
 - **Knife4j** 5.0.11
+
+## 中间件
+
+### MySQL
+
+```bash
+docker run -d \
+  -p 3306:3306 \
+  -e TZ=Asia/Shanghai \
+  -e MYSQL_ROOT_PASSWORD=Password@123 \
+  mysql:8.4
+```
 
 ## 构建
 

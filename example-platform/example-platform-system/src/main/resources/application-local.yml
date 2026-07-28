@@ -1,0 +1,10 @@
+server:
+  port: 8079
+
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
+    username: szzf
+    password: jRzZHvnjRm1kJ9fRj5SL
