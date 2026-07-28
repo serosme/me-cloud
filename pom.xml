@@ -10,15 +10,15 @@
         <relativePath/>
     </parent>
 
-    <groupId>me</groupId>
-    <artifactId>me-cloud</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>example-cloud</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>me-infra</module>
-        <module>me-shared</module>
-        <module>me-platform</module>
+        <module>example-infra</module>
+        <module>example-shared</module>
+        <module>example-platform</module>
     </modules>
 
     <profiles>
