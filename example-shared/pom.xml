@@ -17,6 +17,6 @@
         <module>example-shared-core</module>
         <module>example-shared-web</module>
         <module>example-shared-mybatisplus</module>
-        <module>example-shared-processor</module>
+
     </modules>
 </project>

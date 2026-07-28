@@ -1,4 +1,4 @@
-package com.example.shared.processor;
+package com.example.shared.core;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.ResolvableType;
