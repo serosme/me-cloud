@@ -26,18 +26,6 @@ example-cloud
 - **Spring AI** 1.1.8
 - **Knife4j** 5.0.11
 
-## 中间件
-
-### MySQL
-
-```bash
-docker run -d \
-  -p 3306:3306 \
-  -e TZ=Asia/Shanghai \
-  -e MYSQL_ROOT_PASSWORD=Password@123 \
-  mysql:8.4
-```
-
 ## 构建
 
 ```bash
