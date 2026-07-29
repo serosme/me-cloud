@@ -1,4 +1,4 @@
-package com.example.shared.core;
+package com.example.shared.core.processor;
 
 public interface Handler<C extends Context<?, ?>> {
     default boolean shouldHandle(C context) {

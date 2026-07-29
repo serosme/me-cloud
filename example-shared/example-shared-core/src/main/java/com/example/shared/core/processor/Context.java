@@ -1,4 +1,4 @@
-package com.example.shared.core;
+package com.example.shared.core.processor;
 
 import lombok.Data;
 
