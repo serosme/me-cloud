@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "intellij_debugger",
+      "request": "launch",
+      "name": "GatewayApplication",
+      "mainClass": "com.example.platform.gateway.GatewayApplication",
+      "cwd": "${workspaceFolder}",
+      "args": ["--spring.profiles.active=local"]
+    }
+  ]
+}
