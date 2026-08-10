@@ -29,5 +29,5 @@ example-cloud
 ## 构建
 
 ```bash
-mvn clean package -Plocal
+./mvnw clean compile -Plocal
 ```
