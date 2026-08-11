@@ -92,6 +92,11 @@
         <!-- https://mybatis-plus-join.github.io/ -->
         <mybatis-plus-join.version>1.5.9</mybatis-plus-join.version>
 
+        <!-- Velocity Template Engine -->
+        <!-- 注意：该依赖由 mybatis-plus-generator 以 optional 方式内部引入，此版本需与 mybatis-plus-generator 声明的版本保持一致 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-engine-core -->
+        <velocity.version>2.4.1</velocity.version>
+
         <!-- MinIO -->
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
         <!-- Java Client API Reference Documentation -->
@@ -174,6 +179,13 @@
                 <groupId>com.github.yulichang</groupId>
                 <artifactId>mybatis-plus-join-boot-starter</artifactId>
                 <version>${mybatis-plus-join.version}</version>
+            </dependency>
+            <!-- Velocity Template Engine -->
+            <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-engine-core -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
             </dependency>
             <!-- MinIO -->
             <!-- https://mvnrepository.com/artifact/io.minio/minio -->
