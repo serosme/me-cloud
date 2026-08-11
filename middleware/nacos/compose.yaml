@@ -7,6 +7,7 @@ services:
       - "9848:9848"
     environment:
       - MODE=standalone
+      - FUNCTION_MODE=microservice
       - NACOS_AUTH_TOKEN=SL85c2q9AyZWbTutOt+QrF7WeCONXeYb8IwvIN5wkKI=
       - NACOS_AUTH_IDENTITY_KEY=NACOS_AUTH_IDENTITY_KEY
       - NACOS_AUTH_IDENTITY_VALUE=eb27213d39e0764c3f7f36afd73cc024

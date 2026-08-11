@@ -42,6 +42,7 @@ docker run -d --name redis \
 docker run -d --name nacos \
   -p 8080:8080 -p 8848:8848 -p 9848:9848 \
   -e MODE=standalone \
+  -e FUNCTION_MODE=microservice \
   -e NACOS_AUTH_TOKEN=SL85c2q9AyZWbTutOt+QrF7WeCONXeYb8IwvIN5wkKI= \
   -e NACOS_AUTH_IDENTITY_KEY=NACOS_AUTH_IDENTITY_KEY \
   -e NACOS_AUTH_IDENTITY_VALUE=eb27213d39e0764c3f7f36afd73cc024 \
