@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `sys_user`
 (
     `id`        BIGINT       NOT NULL,
     `deletedAt` BIGINT       NOT NULL DEFAULT 0,
-    `username`  VARCHAR(255) NOT NULL,
-    `password`  VARCHAR(255) NOT NULL,
+    `username`  VARCHAR(255) NOT NULL COMMENT '用户名',
+    `password`  VARCHAR(255) NOT NULL COMMENT '密码',
     PRIMARY KEY (`id`)
-);
+) COMMENT '用户表';

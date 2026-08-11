@@ -1,0 +1,23 @@
+package ${package.Entity};
+
+#foreach($pkg in ${importEntityPackages})
+import ${pkg};
+#end
+
+#foreach($an in ${entityClassAnnotations})
+${an.displayName}
+#end
+public class ${entity} extends ${superEntityClass} {
+#foreach($field in ${table.fields})
+
+#if($!field.comment)
+    /**
+     * ${field.comment}
+     */
+#end
+#foreach($an in ${field.annotationAttributesList})
+    ${an.displayName}
+#end
+    private ${field.propertyType} ${field.propertyName};
+#end
+}

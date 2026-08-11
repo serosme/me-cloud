@@ -1,0 +1,11 @@
+package ${package.Mapper};
+
+#foreach($pkg in ${importPackages})
+import ${pkg};
+#end
+
+#if(${mapperAnnotationClass})
+@${mapperAnnotationClass.simpleName}
+#end
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+}
