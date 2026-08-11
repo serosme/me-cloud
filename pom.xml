@@ -54,6 +54,12 @@
         <!-- https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions#supported-releases -->
         <spring-cloud.version>2025.0.3</spring-cloud.version>
 
+        <!-- Spring Cloud Alibaba Dependencies -->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-alibaba-dependencies -->
+        <!-- 版本发布说明 -->
+        <!-- https://sca.aliyun.com/docs/2025.x/overview/version-explain/ -->
+        <spring-cloud-alibaba.version>2025.0.0.0</spring-cloud-alibaba.version>
+
         <!-- Spring Boot Dependencies -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
         <!-- Reference Documentation -->
@@ -120,6 +126,15 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring Cloud Alibaba Dependencies -->
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-alibaba-dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

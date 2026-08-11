@@ -1,3 +1,15 @@
 spring:
+  application:
+    name: example-platform-system
   profiles:
     active: @active@
+  config:
+    import:
+      - optional:nacos:example-platform-common.yml
+      - optional:nacos:example-platform-system.yml
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      username: nacos
+      password: nacos
+      namespace: dev
