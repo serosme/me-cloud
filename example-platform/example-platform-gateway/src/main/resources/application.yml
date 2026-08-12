@@ -1,15 +1,20 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: example-platform-gateway
-  profiles:
-    active: @active@
-  config:
-    import:
-      - optional:nacos:example-platform-common.yml
-      - optional:nacos:example-platform-gateway.yml
   cloud:
     nacos:
-      server-addr: localhost:8848
-      username: nacos
-      password: nacos
-      namespace: dev
+      server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
+      config:
+        namespace: ${NACOS_NAMESPACE:dev}
+      discovery:
+        namespace: ${NACOS_NAMESPACE:dev}
+  config:
+    import:
+      - application-spring.yml
+      - optional:nacos:example-platform-common.yml
+      - optional:nacos:example-platform-gateway.yml

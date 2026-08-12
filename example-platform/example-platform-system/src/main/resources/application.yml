@@ -2,21 +2,19 @@ server:
   port: 8079
 
 spring:
-  main:
-    banner-mode: off
   application:
     name: example-platform-system
   cloud:
     nacos:
-      server-addr: 127.0.0.1:8848
-      username: nacos
-      password: nacos
+      server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
       config:
-        namespace: dev
+        namespace: ${NACOS_NAMESPACE:dev}
       discovery:
-        namespace: dev
+        namespace: ${NACOS_NAMESPACE:dev}
   config:
     import:
       - application-spring.yml
-      - nacos:example-platform-common.yml
-      - nacos:example-platform-system.yml
+      - optional:nacos:example-platform-common.yml
+      - optional:nacos:example-platform-system.yml

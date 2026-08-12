@@ -21,24 +21,6 @@
         <module>example-platform</module>
     </modules>
 
-    <profiles>
-        <profile>
-            <id>local</id>
-            <properties>
-                <active>local</active>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <active>prod</active>
-            </properties>
-        </profile>
-    </profiles>
-
     <properties>
         <!-- 项目版本 -->
         <revision>0.0.1</revision>

@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: system
+              uri: http://localhost:8079
+              predicates:
+                - Path=/system/**
+              filters:
+                - StripPrefix=1
