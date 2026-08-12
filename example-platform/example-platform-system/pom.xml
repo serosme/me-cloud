@@ -41,6 +41,11 @@
 
         <dependency>
             <groupId>com.example</groupId>
+            <artifactId>example-shared-web</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
             <artifactId>example-shared-mybatisplus</artifactId>
             <version>${revision}</version>
         </dependency>

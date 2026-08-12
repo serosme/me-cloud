@@ -1,15 +1,22 @@
+server:
+  port: 8079
+
 spring:
+  main:
+    banner-mode: off
   application:
     name: example-platform-system
-  profiles:
-    active: @active@
-  config:
-    import:
-      - optional:nacos:example-platform-common.yml
-      - optional:nacos:example-platform-system.yml
   cloud:
     nacos:
-      server-addr: localhost:8848
+      server-addr: 127.0.0.1:8848
       username: nacos
       password: nacos
-      namespace: dev
+      config:
+        namespace: dev
+      discovery:
+        namespace: dev
+  config:
+    import:
+      - application-spring.yml
+      - nacos:example-platform-common.yml
+      - nacos:example-platform-system.yml
