@@ -6,8 +6,14 @@
       "request": "launch",
       "name": "GatewayApplication",
       "mainClass": "com.example.platform.gateway.GatewayApplication",
-      "cwd": "${workspaceFolder}",
-      "args": ["--spring.profiles.active=local"]
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "intellij_debugger",
+      "request": "launch",
+      "name": "SystemApplication",
+      "mainClass": "com.example.platform.system.SystemApplication",
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
