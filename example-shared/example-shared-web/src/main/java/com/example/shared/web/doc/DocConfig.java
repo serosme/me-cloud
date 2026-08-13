@@ -16,10 +16,10 @@ public class DocConfig {
                 .scheme("bearer");
 
         Components components = new Components()
-                .addSecuritySchemes("token", securityScheme);
+                .addSecuritySchemes("Bearer Token", securityScheme);
 
         return new OpenAPI()
-                .addSecurityItem(new SecurityRequirement().addList("token"))
+                .addSecurityItem(new SecurityRequirement().addList("Bearer Token"))
                 .components(components);
     }
 }
