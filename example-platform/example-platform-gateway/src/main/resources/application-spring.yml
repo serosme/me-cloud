@@ -5,7 +5,7 @@ spring:
         webflux:
           routes:
             - id: system
-              uri: http://localhost:8079
+              uri: lb://example-platform-system
               predicates:
                 - Path=/system/**
               filters:

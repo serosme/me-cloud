@@ -1,0 +1,4 @@
+###
+GET {{baseURL}}/system/user?
+    id=99
+Accept: application/json
