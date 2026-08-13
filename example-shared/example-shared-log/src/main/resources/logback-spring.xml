@@ -1,63 +1,79 @@
-<configuration scan="true" scanPeriod="60 seconds">
-    <!-- 所有环境下定义 ConsoleAppender -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- logback-spring.xml：支持 springProperty/condition/if 等 Spring Boot 扩展标签。 -->
+<configuration>
+    <!-- log.console：控制台输出格式。 -->
     <property name="log.console" value="%d{HH:mm:ss.SSS} [%thread] %highlight(%level) %logger{36} - %msg%n"/>
+    <!-- log.path：日志目录。 -->
+    <property name="log.path" value="logs"/>
+    <!-- log.file：文件输出格式。 -->
+    <property name="log.file" value="%d{HH:mm:ss.SSS} [%thread] %level %logger{36} - %msg%n"/>
+    <!-- springProperty：读取 Nacos 属性 app.logging.file-enabled 作为 logback 变量 log.file.enabled。 -->
+    <springProperty scope="context" name="log.file.enabled" source="app.logging.file-enabled" defaultValue="false"/>
+
+    <!-- console：控制台输出 appender。 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder：输出格式。 -->
         <encoder>
             <pattern>${log.console}</pattern>
         </encoder>
     </appender>
-    <!-- 非 local 环境下定义 RollingFileAppender -->
-    <springProfile name="!local">
-        <!-- 日志存放路径 -->
-        <property name="log.path" value="logs"/>
-        <!-- 日志输出格式 -->
-        <property name="log.file" value="%d{HH:mm:ss.SSS} [%thread] %level %logger{36} - %msg%n"/>
-        <!-- info 级别 RollingFileAppender -->
-        <appender name="file.info" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${log.path}/info.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-                <fileNamePattern>${log.path}/info-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
-                <maxHistory>30</maxHistory>
-                <maxFileSize>100MB</maxFileSize>
-                <totalSizeCap>1GB</totalSizeCap>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${log.file}</pattern>
-            </encoder>
-        </appender>
-        <!-- error 级别 RollingFileAppender -->
-        <appender name="file.error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-                <level>error</level>
-            </filter>
-            <file>${log.path}/error.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-                <fileNamePattern>${log.path}/error-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
-                <maxHistory>30</maxHistory>
-                <maxFileSize>100MB</maxFileSize>
-                <totalSizeCap>1GB</totalSizeCap>
-            </rollingPolicy>
-            <encoder>
-                <pattern>${log.file}</pattern>
-            </encoder>
-        </appender>
-    </springProfile>
-    <!-- info 及以上级别的日志输出至控制台 -->
+
+    <!-- root：根 logger，挂 console，全局最低级别 info。 -->
     <root level="info">
         <appender-ref ref="console"/>
     </root>
-    <!-- local 环境下配置 -->
-    <springProfile name="local">
-        <!-- 指定包或类的日志输出级别 -->
-        <logger name="org.springframework.jdbc.core.JdbcTemplate" level="debug"/>
-        <logger name="com.example" level="debug"/>
-    </springProfile>
-    <!-- 非 local 环境下配置 -->
-    <springProfile name="!local">
-        <!-- info 及以上级别的日志输出至日志文件 -->
-        <root level="info">
-            <appender-ref ref="file.info"/>
-            <appender-ref ref="file.error"/>
-        </root>
-    </springProfile>
+
+    <!-- condition：判断 log.file.enabled 是否为 true。 -->
+    <condition class="ch.qos.logback.core.boolex.PropertyEqualityCondition">
+        <key>log.file.enabled</key>
+        <value>true</value>
+    </condition>
+    <!-- if/then：条件成立时创建文件 appender 并挂到 root。 -->
+    <if>
+        <then>
+            <!-- file.info：info 及以上写入 info.log。 -->
+            <appender name="file.info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!-- file：当前写入文件。 -->
+                <file>${log.path}/info.log</file>
+                <!-- rollingPolicy：按天 + 按大小滚动。 -->
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <!-- fileNamePattern：归档命名。 -->
+                    <fileNamePattern>${log.path}/info-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+                    <!-- maxHistory：保留最近 30 天。 -->
+                    <maxHistory>30</maxHistory>
+                    <!-- maxFileSize：单文件超过 100MB 滚动。 -->
+                    <maxFileSize>100MB</maxFileSize>
+                    <!-- totalSizeCap：归档总量上限 1GB。 -->
+                    <totalSizeCap>1GB</totalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>${log.file}</pattern>
+                </encoder>
+            </appender>
+
+            <!-- file.error：仅 error 及以上写入 error.log。 -->
+            <appender name="file.error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!-- filter：只放行 error 及以上级别。 -->
+                <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                    <level>error</level>
+                </filter>
+                <file>${log.path}/error.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <fileNamePattern>${log.path}/error-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+                    <maxHistory>30</maxHistory>
+                    <maxFileSize>100MB</maxFileSize>
+                    <totalSizeCap>1GB</totalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>${log.file}</pattern>
+                </encoder>
+            </appender>
+
+            <!-- 条件成立时把两个文件 appender 挂到 root。 -->
+            <root level="info">
+                <appender-ref ref="file.info"/>
+                <appender-ref ref="file.error"/>
+            </root>
+        </then>
+    </if>
 </configuration>
