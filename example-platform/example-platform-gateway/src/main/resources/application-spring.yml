@@ -3,10 +3,14 @@ spring:
     gateway:
       server:
         webflux:
-          routes:
-            - id: system
-              uri: lb://example-platform-system
-              predicates:
-                - Path=/system/**
-              filters:
-                - StripPrefix=1
+          discovery:
+            locator:
+              enabled: true
+knife4j:
+  gateway:
+    enabled: true
+    strategy: DISCOVER
+    discover:
+      enabled: true
+      oas3:
+        url: /v3/api-docs
