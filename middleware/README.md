@@ -17,7 +17,7 @@ middleware
 |-------|---------------------------|-----------------------------|----------------------|----------------|
 | MySQL | mysql:8.4                 | 3306                        | root / Password@123  | 数据存储       |
 | Redis | redis:8                   | 6379                        | 密码 Password@123    | 缓存           |
-| Nacos | nacos/nacos-server:v3.2.3 | 8080（控制台）/ 8848 / 9848 | 首次启动后自行初始化 | 注册与配置中心 |
+| Nacos | nacos/nacos-server:v3.2.3 | 7848（控制台）/ 8848 / 9848 | 首次启动后自行初始化 | 注册与配置中心 |
 
 ## docker run 单独运行
 
@@ -40,7 +40,7 @@ docker run -d --name redis \
 
 ```bash
 docker run -d --name nacos \
-  -p 8080:8080 -p 8848:8848 -p 9848:9848 \
+  -p 7848:8080 -p 8848:8848 -p 9848:9848 \
   -e MODE=standalone \
   -e FUNCTION_MODE=microservice \
   -e NACOS_AUTH_TOKEN=SL85c2q9AyZWbTutOt+QrF7WeCONXeYb8IwvIN5wkKI= \
